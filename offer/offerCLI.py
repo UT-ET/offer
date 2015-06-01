@@ -72,7 +72,7 @@ def main():
                            help='File to host')
     argParser.add_argument('-p', '--port',
                            help='Port to use. (default: 80/8000)',
-                           default=0)
+                           type=int, default=0)
 
     args = argParser.parse_args()
 
