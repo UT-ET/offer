@@ -8,7 +8,6 @@
 # http://www.opensource.org/licenses/MIT-license
 # Copyright (c) 2015, Utkarsh Upadhyay <musically.ut@gmail.com>
 
-from offer.version import __version__  # NOQA
+from . import offerCLI as o
 
-if __name__ == '__main__':
-    main()
+o.main()

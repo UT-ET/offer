@@ -43,7 +43,6 @@ Quickly host files for local transfer.
         'Operating System :: Unix',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: Implementation :: PyPy',
         'Operating System :: OS Independent',
     ],
     packages=find_packages(),
@@ -57,8 +56,7 @@ Quickly host files for local transfer.
     },
     entry_points={
         'console_scripts': [
-            # add cli scripts here in this form:
-            # 'offer=offer.cli:main',
+            'offer=offer.offerCLI:main'
         ],
     },
 )
