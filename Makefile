@@ -20,7 +20,8 @@ test: unit
 
 unit:
 	@coverage run --branch `which nosetests` -vv --with-yanc -s tests/
-	@coverage report -m --fail-under=80
+	# @coverage report -m --fail-under=80
+	@coverage report -m
 
 # show coverage in html format
 coverage-html: unit
