@@ -49,7 +49,9 @@ Quickly host files for local transfer.
     include_package_data=False,
     install_requires=[
         # add your dependencies here
-        # remember to use 'package-name>=x.y.z,<x.y+1.0' notation (this way you get bugfixes)
+        # remember to use 'package-name>=x.y.z,<x.y+1.0' notation
+        # (this way you get bugfixes)
+        "netifaces>=0.10.4,<0.11.0"
     ],
     extras_require={
         'tests': tests_require,

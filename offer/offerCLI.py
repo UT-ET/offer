@@ -11,6 +11,7 @@
 import argparse as _argparse
 import os as _os
 import sys as _sys
+import netifaces as _N
 _path = _os.path
 
 try:
@@ -61,6 +62,18 @@ class FileHTTPServerHandler(SimpleHTTPRequestHandler):
             f.close()
             raise
 
+def getValidIPs():
+    ips = []
+    for iface in _N.interfaces():
+        addrsDict = _N.ifaddresses(iface)
+        if _N.AF_INET in addrsDict:
+            for addrInfo in addrsDict[_N.AF_INET]:
+                ip = addrInfo['addr']
+                if not ip.startswith('127.0.0'):
+                    ips.append(ip)
+
+    return ips
+
 
 def main():
     """Host a file."""
@@ -88,23 +101,41 @@ def main():
     handler.protocol_version = "HTTP/1.0"
     handler.absFilePath = absFilePath
 
+    port = 80 if tryDefaultPorts else args.port
+
     try:
-        server_address = ("", 80 if tryDefaultPorts else args.port)
+        server_address = ("", port)
         httpd = _B.HTTPServer(server_address, handler)
     except IOError as e:
         # If it is a permission denied error, and we had been ambitiously
         # trying port, 80, let's try port 8000 instead
         if e.errno == 13 and tryDefaultPorts:
-            server_address = ("", 8000)
+            port = 8000
+            server_address = ("", port)
             httpd = _B.HTTPServer(server_address, handler)
         else:
             raise
 
     sa = httpd.socket.getsockname()
-    print("Serving file {} on {}:{} ...".format(absFilePath, sa[0], sa[1]))
+    _sys.stderr.write("Serving file {} on {}:{} ...\n"
+                        .format(absFilePath, sa[0], sa[1]))
+
+    possibleIps = getValidIPs()
+    if len(possibleIps) == 0:
+        _sys.stderr.write(u'No IPs for localhost found. ' +
+                          u'Are you connected to LAN?\n')
+    else:
+        _sys.stderr.write(u'Download the file by pointing the browser ' +
+                          u'on the remote machine to:\n')
+        portStr = '' if port == 80 else ':' + str(port)
+        for ip in possibleIps:
+            _sys.stderr.write(u'\t' + ip + portStr + '\n')
+
+    _sys.stderr.write('Press Ctrl-C to stop hosting.\n')
+
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
-        print("\nKeyboard interrupt received, exiting.")
+        _sys.stderr.write("\nKeyboard interrupt received, exiting.\n")
         httpd.server_close()
         _sys.exit(0)
