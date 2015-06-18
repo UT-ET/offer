@@ -12,6 +12,7 @@ import argparse as _argparse
 import os as _os
 import sys as _sys
 import netifaces as _N
+import urllib2 as _U2
 _path = _os.path
 
 try:
@@ -38,22 +39,31 @@ class FileHTTPServerHandler(SimpleHTTPRequestHandler):
         and must be closed by the caller under all circumstances), or
         None, in which case the caller has nothing further to do.
         """
-        path = self.absFilePath
+
+        offerredPath = self.absFilePath
         f = None
-        ctype = self.guess_type(path)
-        fName = _path.basename(path)
+        fName = _path.basename(offerredPath)
+
+        urlPath = _U2.unquote(self.path)
+        if urlPath == '/':
+            self.send_response(307)
+            self.send_header("Location", "/" + _U2.quote(fName))
+            self.end_headers()
+            return None
+
+        ctype = self.guess_type(offerredPath)
         try:
-            f = open(path, 'rb')
+            f = open(offerredPath, 'rb')
         except OSError:
             self.send_error(404, "File not found")
             return None
+
         try:
             self.send_response(200)
             self.send_header("Content-type", ctype)
             fs = _os.fstat(f.fileno())
             self.send_header("Content-Length", str(fs[6]))
-            self.send_header("Content-Disposition",
-                             "attachment; filename='" + fName + "'")
+            self.send_header("Content-Disposition", "attachment")
             self.send_header("Last-Modified",
                              self.date_time_string(fs.st_mtime))
             self.end_headers()
@@ -91,7 +101,7 @@ def main():
 
     absFilePath = _path.abspath(_path.expandvars(_path.expanduser(args.file)))
     if not _path.isfile(absFilePath):
-        _sys.stdout.write(u"Couldn't find/access file: " + args.file)
+        _sys.stdout.write(u"Couldn't find/access file: " + args.file + "\n")
         _sys.exit(-1)
 
     tryDefaultPorts = args.port == 0
