@@ -10,6 +10,9 @@
 
 from setuptools import setup, find_packages
 from offer import __version__
+import io
+from os.path import dirname
+from os.path import join
 
 tests_require = [
     'mock',
@@ -23,13 +26,19 @@ tests_require = [
     'sphinx',
 ]
 
+
+def read(*names, **kwargs):
+    return io.open(
+        join(dirname(__file__), *names),
+        encoding=kwargs.get('encoding', 'utf8')
+    ).read()
+
+
 setup(
     name='offer',
     version=__version__,
     description='Quickly host files for local transfer.',
-    long_description='''
-Quickly host files for local transfer.
-''',
+    long_description=read('README.rst'),
     keywords='host,network,local',
     author='Utkarsh Upadhyay',
     author_email='musically.ut@gmail.com',
@@ -61,4 +70,5 @@ Quickly host files for local transfer.
             'offer=offer.offerCLI:main'
         ],
     },
+    zip_safe=True
 )
