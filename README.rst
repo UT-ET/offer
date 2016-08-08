@@ -10,7 +10,7 @@ Usage
 
 ::
 
-    pip install git+https://github.com/musically-ut/offer.git
+    pip install offer
 
 Then you can use it from the CLI:
 
