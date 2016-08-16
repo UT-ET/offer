@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>offer</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Fjalla+One|Roboto' rel='stylesheet' type='text/css'>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="favicon" href="favicon.ico">
+</head>
+<body>
+            <div class="row">
+                <div class="col-md-4 wrap-inside">
+                    <div class="pic-right-align">
+                        <img  src="./images/offer.png">
+                    </div>
+                </div>
+                <h1 class="col-md-8 heading-font" id="heading-size">offer</h1>
+
+            </div>
+
+
+<div class="text-container">
+
+    <div class="quote-container" id="foo-bar">
+
+        Quickly <i>offer</i> a file for download on LAN.
+        <h1  id="heading-size">Usage</h1>
+        <hr>
+        <pre class="pre-format">pip install offer</pre>
+
+        <p class="spacing">Then you can use it from the CLI:</p>
+
+        <pre class="pre-format">offer ~/path/file.ext</pre>
+        <p class="spacing">It'll try to host the file on port 80 by default and will fall back on port <span><pre class="pre-format" style="display: inline">8000</pre></span> silently if it is not run with the correct permissions. You can provide a custom port via the <pre class="pre-format"style="display: inline">--port</pre> argument.</p>
+        <p>Then from another computer/tablet/phone, you can either point the browser at the IP address printed out or use curl.
+
+</p>
+    <h1  id="heading-size">Note about cURL</h1>
+    <hr>
+    <p> Remember to use the -L flag with cURL to follow redirects.</p>
+    </div>
+
+</div>
+
+</body>
+</html>
