@@ -7,9 +7,6 @@
     font-size: 2.2rem;
 }
 
-
-
-
 .pre-format {
     font-size: 2rem;
     margin: 1rem
@@ -18,28 +15,6 @@
 .spacing {
     margin-top: 3rem;
     margin-bottom: 1rem;
-}
-
-.pic-right-align {
-    text-align:right;
-    transform:scale(1.0);
-}
-
-.intro-align {
-    font-family: 'Droid Sans';
-    font-size: 2.2rem;
-    margin-top: 5rem;
-}
-
-h1.heading-font#heading-size {
-    font-family: 'Droid Sans', sans-serif;
-
-    font-size: 8rem;
-    margin-bottom: 0rem;
-    margin-top: 6.5rem;
-    left: -2.45em;
-    text-align: center;
-
 }
 
 .body {

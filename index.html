@@ -16,37 +16,39 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="favicon" href="favicon.ico">
 </head>
+
 <body>
-            <div class="row">
-                <div class="col-md-4 wrap-inside">
-                    <div class="pic-right-align">
-                        <img  src="./images/offer.png">
-                    </div>
-                </div>
-                <h1 class="col-md-8 heading-font" id="heading-size">offer</h1>
-
-            </div>
-
-
 <div class="text-container">
+        <div id="container">
+        <div class="page-header">
+            <h1>
+                <img src="./images/offer.png"/> offer <small>: Quickly <i>offer</i> a file for download on LAN</small>
+            </h1>
+        </div>
+        </div>​
 
     <div class="quote-container" id="foo-bar">
-
-        Quickly <i>offer</i> a file for download on LAN.
-        <h1  id="heading-size">Usage</h1>
+        <h2  id="heading-size">Usage</h2>
         <hr>
+        Insatll it using <code>pip</code>:
+
         <pre class="pre-format">pip install offer</pre>
 
-        <p class="spacing">Then you can use it from the CLI:</p>
+        <p class="spacing">
+            You can use it from the CLI:
 
-        <pre class="pre-format">offer ~/path/file.ext</pre>
-        <p class="spacing">It'll try to host the file on port 80 by default and will fall back on port <span><pre class="pre-format" style="display: inline">8000</pre></span> silently if it is not run with the correct permissions. You can provide a custom port via the <pre class="pre-format"style="display: inline">--port</pre> argument.</p>
-        <p>Then from another computer/tablet/phone, you can either point the browser at the IP address printed out or use curl.
+            <pre class="pre-format">offer ~/path/file.ext</pre>
+        </p>
 
-</p>
-    <h1  id="heading-size">Note about cURL</h1>
-    <hr>
-    <p> Remember to use the -L flag with cURL to follow redirects.</p>
+        <p>
+            It'll try to host the file on port <code>80</code> by default and will fall back on port <code>8000</code> silently if it is not run with the correct permissions.
+            You can provide a custom port via the <code>--port</code> argument.
+            Then from another computer/tablet/phone, you can either point the browser at the IP address printed out or use <a href="https://curl.haxx.se/">curl</a>.
+        </p>
+
+        <h2  id="heading-size">Note about cURL</h2>
+        <hr>
+        <p> Remember to use the <code>-L</code> flag with cURL to follow redirects.</p>
     </div>
 
 </div>
