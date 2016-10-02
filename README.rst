@@ -30,5 +30,5 @@ Note about cURL
 
 Remember to use the `-L` flag with cURL to follow redirects.
 
-.. |BuildStatus| image:: https://travis-ci.org/musically-ut/offer.svg?branch=master
-   :target: https://travis-ci.org/musically-ut/offer
+.. |BuildStatus| image:: https://travis-ci.org/UT-ET/offer.svg?branch=master
+   :target: https://travis-ci.org/UT-ET/offer
